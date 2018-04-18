@@ -4,24 +4,31 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
+    "start": "ng serve -o",
+    "build": "ng build -prod -aot",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "e2e:watch": "watch \"ng e2e -s false\" src e2e --wait=1"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.0",
+    "@angular/cdk": "^5.2.5",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
     "@angular/core": "^5.2.0",
     "@angular/forms": "^5.2.0",
     "@angular/http": "^5.2.0",
+    "@angular/material": "^5.2.5",
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "@covalent/core": "^1.0.0",
+    "angularfire2": "^5.0.0-rc.6.0",
     "core-js": "^2.4.1",
+    "firebase": "^4.12.1",
+    "lodash": "^4.17.5",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -43,6 +50,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
+    "typescript": "~2.5.3",
+    "watch": "^1.0.2"
   }
 }
