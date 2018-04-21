@@ -14,6 +14,12 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@afd-core/*": ["app/core/*"],
+      "@afd-shared/*": ["app/shared/*"],
+      "@afd-environments/*": ["environments/*"]
+    }
   }
 }
