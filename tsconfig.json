@@ -19,6 +19,7 @@
     "paths": {
       "@afd-core/*": ["app/core/*"],
       "@afd-shared/*": ["app/shared/*"],
+      "@afd-todo/*": ["app/todo/*"],
       "@afd-environments/*": ["environments/*"]
     }
   }

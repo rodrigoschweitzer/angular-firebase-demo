@@ -1,0 +1,18 @@
+<td-layout opened="false" [mode]="menuMode">
+
+	<!-- <td-navigation-drawer sidenavTitle="SEDA" color="primary">
+	</td-navigation-drawer> -->
+
+	<td-layout-nav>
+		<!-- <button *ngIf="hideMenuButton" mat-icon-button td-menu-button tdLayoutToggle>
+			<mat-icon>menu</mat-icon>
+		</button> -->
+		<div td-toolbar-content fxLayout fxLayoutAlign="start center" fxFlex>
+			<span>{{ title }}</span>
+		</div>
+
+		<router-outlet></router-outlet>
+		<!-- <router-outlet name="modal"></router-outlet> -->
+	</td-layout-nav>
+
+</td-layout>
