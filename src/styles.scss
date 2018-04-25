@@ -8,10 +8,10 @@ $typography: mat-typography-config(
 
 @include mat-core($typography);
 
-$primary: mat-palette($mat-light-blue, 800, 100, 900);
-$accent:  mat-palette($mat-pink, 600, 100, 900);
+$primary: mat-palette($mat-light-blue);
+$accent:  mat-palette($mat-pink);
 
-$warn:    mat-palette($mat-red, 600, 100, 900);
+$warn:    mat-palette($mat-red);
 
 $theme: mat-light-theme($primary, $accent, $warn);
 
