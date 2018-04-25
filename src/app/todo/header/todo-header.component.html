@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="addTodo()">
+  <mat-form-field>
+    <input type="text" matInput formControlName="todo">
+  </mat-form-field>
+
+  <button type="submit" mat-icon-button>
+    <mat-icon>send</mat-icon>
+  </button>
+</form>
