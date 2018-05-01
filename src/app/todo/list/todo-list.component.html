@@ -1,3 +1,9 @@
-<p>
-  todo-list works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let todo of todos">
+    <span matLine>{{ todo.title }}</span>
+    <mat-checkbox></mat-checkbox>
+    <button type="button" mat-icon-button (click)="delete(todo)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

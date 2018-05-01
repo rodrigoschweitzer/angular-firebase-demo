@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../todo.model';
 
 @Component({
   selector: 'afd-todo-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
+  @Output('delete')
+  private deleteTodoEventEmitter: EventEmitter<Todo> = new EventEmitter();
+
+  todos: Todo[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.todos.push(
+      { title: 'Teste adfsdf sdf', done: false }
+    );
   }
+
+  delete(todo: Todo) {
+    this.deleteTodoEventEmitter.emit(todo);
+  }
+
+
 
 }

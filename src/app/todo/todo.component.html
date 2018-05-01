@@ -1,3 +1,9 @@
-<p>
-  todo works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <afd-todo-header (add)="addTodo($event)"></afd-todo-header>
+  </mat-card-header>
+
+  <mat-card-content>
+    <afd-todo-list></afd-todo-list>
+  </mat-card-content>
+</mat-card>
