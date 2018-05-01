@@ -1,4 +1,5 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { AbstractService } from './abstract/abstract.service';
 
 @NgModule({
   imports: [],
@@ -12,7 +13,9 @@ export class CoreModule {
 	static forRoot(): ModuleWithProviders {
 		return {
 			ngModule: CoreModule,
-			providers: []
+			providers: [
+				AbstractService
+			]
 		};
 	}
 }
