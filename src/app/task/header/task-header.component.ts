@@ -2,14 +2,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'afd-todo-header',
-  templateUrl: './todo-header.component.html',
-  styleUrls: ['./todo-header.component.scss']
+  selector: 'afd-task-header',
+  templateUrl: './task-header.component.html'
 })
-export class TodoHeaderComponent implements OnInit {
+export class TaskHeaderComponent implements OnInit {
 
   @Output('add')
-  private addTodoEventEmitter: EventEmitter<string> = new EventEmitter();
+  private addTaskEventEmitter: EventEmitter<string> = new EventEmitter();
 
   form: FormGroup;
 
@@ -21,20 +20,20 @@ export class TodoHeaderComponent implements OnInit {
 
   add() {
     if (this.form.valid) {
-      const todo = this.form.get('todo');
-      this.addTodoEventEmitter.emit(todo.value);
+      const task = this.form.get('task');
+      this.addTaskEventEmitter.emit(task.value);
       this.clear();
     }
   }
 
   clear() {
-    const todo = this.form.get('todo');
-    todo.setValue('');
+    const task = this.form.get('task');
+    task.setValue('');
   }
 
   private setupForm() {
     this.form = this.formBuilder.group({
-      todo: ['', Validators.required]
+      task: ['', Validators.required]
     });
   }
 

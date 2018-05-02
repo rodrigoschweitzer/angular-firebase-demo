@@ -6,8 +6,8 @@ const routes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'todos' },
-      { path: 'todos', loadChildren: 'app/todo/todo.module#TodoModule' }
+      { path: '', pathMatch: 'full', redirectTo: 'tasks' },
+      { path: 'tasks', loadChildren: 'app/task/task.module#TaskModule' }
     ]
   }
 ];

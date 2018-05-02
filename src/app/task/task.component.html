@@ -1,0 +1,13 @@
+<mat-card>
+
+  <mat-card-content>
+    <afd-task-header (add)="add($event)" fxFlex></afd-task-header>
+
+    <mat-divider></mat-divider>
+
+    <div *tdLoading="let tasks until tasks$ | async; color: 'accent';">
+      <afd-task-list [tasks]="tasks" (done)="done($event)" (delete)="delete($event)"></afd-task-list>
+    </div>
+
+  </mat-card-content>
+</mat-card>
