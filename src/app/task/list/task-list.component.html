@@ -1,8 +1,9 @@
+<mat-list *ngIf="tasks?.length; else message">
+  <h3 matSubheader *ngIf="title">{{ title }}</h3>
 
-<mat-list>
-  <mat-list-item *ngFor="let task of tasks; let last = last; trackBy: trackById">
+  <mat-list-item *ngFor="let task of tasks; let last = last; trackBy: trackById" [ngClass]="{ 'completed': task.completed }">
 
-    <mat-checkbox [checked]="task.done" (change)="done($event, task)" fxFlex>{{ task.title }}</mat-checkbox>
+    <mat-checkbox [checked]="task.completed" (change)="completed($event, task)" fxFlex>{{ task.title }}</mat-checkbox>
 
     <button type="button" mat-icon-button (click)="delete(task)">
       <mat-icon>delete</mat-icon>
@@ -12,3 +13,10 @@
 
   </mat-list-item>
 </mat-list>
+
+<ng-template #message>
+  <div class="mat-body-2 push" *ngIf="!hideMessage" fxLayout="column" fxLayoutAlign="center center">
+    <div class="empty-tasks"></div>
+    <div>You don't have any tasks.</div>
+  </div>
+</ng-template>

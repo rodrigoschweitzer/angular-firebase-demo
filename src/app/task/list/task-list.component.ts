@@ -4,9 +4,26 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'afd-task-list',
-  templateUrl: './task-list.component.html'
+  templateUrl: './task-list.component.html',
+  styles: [`
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+    .empty-tasks {
+      width: 100px;
+      height: 100px;
+      background: url('assets/images/empty_tasks.png') round;
+    }
+  `]
 })
 export class TaskListComponent {
+
+  @Input()
+  title: string;
+
+  @Input()
+  hideMessage: boolean = false;
 
   @Input()
   tasks: Task[] = [];
@@ -14,13 +31,14 @@ export class TaskListComponent {
   @Output('delete')
   private deleteTaskEventEmitter: EventEmitter<Task> = new EventEmitter();
 
-  @Output('done')
-  private doneTaskEventEmitter: EventEmitter<Task> = new EventEmitter();
+  @Output('completed')
+  private completedTaskEventEmitter: EventEmitter<Task> = new EventEmitter();
 
   constructor() { }
 
-  done(event: MatCheckboxChange, task: Task) {
-    this.doneTaskEventEmitter.emit({ ...task, done: event.checked });
+  completed(event: MatCheckboxChange, task: Task) {
+    const finishedAt = event.checked ? new Date() : null;
+    this.completedTaskEventEmitter.emit({ ...task, completed: event.checked, finishedAt });
   }
 
   delete(task: Task) {
@@ -29,6 +47,6 @@ export class TaskListComponent {
 
   trackById(index: number, task: Task) {
     return task ? task.id : index;
-}
+  }
 
 }

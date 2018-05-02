@@ -19,21 +19,22 @@ export class TaskHeaderComponent implements OnInit {
   }
 
   add() {
-    if (this.form.valid) {
-      const task = this.form.get('task');
-      this.addTaskEventEmitter.emit(task.value);
+    const { value } = this.form.get('task');
+
+    if (value && value.trim().length) {
+      this.addTaskEventEmitter.emit(value);
       this.clear();
     }
   }
 
   clear() {
     const task = this.form.get('task');
-    task.setValue('');
+    task.reset('');
   }
 
   private setupForm() {
     this.form = this.formBuilder.group({
-      task: ['', Validators.required]
+      task: ['']
     });
   }
 

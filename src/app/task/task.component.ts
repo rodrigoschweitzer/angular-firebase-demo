@@ -11,6 +11,8 @@ export class TaskComponent implements OnInit {
 
   tasks$: Observable<Task[]>;
 
+  tasksCompleted$: Observable<Task[]>;
+
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
@@ -18,10 +20,10 @@ export class TaskComponent implements OnInit {
   }
 
   add(title: string) {
-    this.taskService.add({ title, done: false, createAt: new Date() });
+    this.taskService.add({ title, completed: false, createdAt: new Date(), finishedAt: null });
   }
 
-  done(task: Task) {
+  completed(task: Task) {
     this.taskService.update(task);
   }
 
@@ -30,7 +32,8 @@ export class TaskComponent implements OnInit {
   }
 
   private loadTasks() {
-    this.tasks$ = this.taskService.list(ref => ref.orderBy('createAt', 'desc'));
+    this.tasks$ = this.taskService.list(ref => ref.where('completed', '==', false).orderBy('createdAt', 'desc'));
+    this.tasksCompleted$ = this.taskService.list(ref => ref.where('completed', '==', true).orderBy('finishedAt', 'desc'));
   }
 
 }

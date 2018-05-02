@@ -6,7 +6,11 @@
     <mat-divider></mat-divider>
 
     <div *tdLoading="let tasks until tasks$ | async; color: 'accent';">
-      <afd-task-list [tasks]="tasks" (done)="done($event)" (delete)="delete($event)"></afd-task-list>
+      <afd-task-list [tasks]="tasks" (completed)="completed($event)" (delete)="delete($event)"></afd-task-list>
+
+      <!-- <mat-divider></mat-divider> -->
+
+      <afd-task-list title="Completed" hideMessage="true" [tasks]="tasksCompleted$ | async" (completed)="completed($event)" (delete)="delete($event)"></afd-task-list>
     </div>
 
   </mat-card-content>
