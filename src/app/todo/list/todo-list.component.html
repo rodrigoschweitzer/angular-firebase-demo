@@ -1,9 +1,14 @@
+
 <mat-list>
-  <mat-list-item *ngFor="let todo of todos">
-    <span matLine>{{ todo.title }}</span>
-    <mat-checkbox></mat-checkbox>
+  <mat-list-item *ngFor="let todo of todos; let last = last; trackBy: trackById">
+
+    <mat-checkbox [checked]="todo.done" (change)="done($event, todo)" fxFlex>{{ todo.title }}</mat-checkbox>
+
     <button type="button" mat-icon-button (click)="delete(todo)">
       <mat-icon>delete</mat-icon>
     </button>
+
+    <mat-divider *ngIf="!last"></mat-divider>
+
   </mat-list-item>
 </mat-list>

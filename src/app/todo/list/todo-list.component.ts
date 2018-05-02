@@ -1,30 +1,35 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Todo } from '../todo.model';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'afd-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
+
+  @Input()
+  todos: Todo[] = [];
 
   @Output('delete')
   private deleteTodoEventEmitter: EventEmitter<Todo> = new EventEmitter();
 
-  todos: Todo[] = [];
+  @Output('done')
+  private doneTodoEventEmitter: EventEmitter<Todo> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-    this.todos.push(
-      { title: 'Teste adfsdf sdf', done: false }
-    );
+  done(event: MatCheckboxChange, todo: Todo) {
+    this.doneTodoEventEmitter.emit({ ...todo, done: event.checked });
   }
 
   delete(todo: Todo) {
     this.deleteTodoEventEmitter.emit(todo);
   }
 
-
+  trackById(index: number, todo: Todo) {
+    return todo ? todo.id : index;
+}
 
 }

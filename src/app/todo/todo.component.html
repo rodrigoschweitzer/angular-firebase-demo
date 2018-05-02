@@ -1,9 +1,13 @@
 <mat-card>
-  <mat-card-header>
-    <afd-todo-header (add)="addTodo($event)"></afd-todo-header>
-  </mat-card-header>
 
   <mat-card-content>
-    <afd-todo-list></afd-todo-list>
+    <afd-todo-header (add)="add($event)" fxFlex></afd-todo-header>
+
+    <mat-divider></mat-divider>
+
+    <div *tdLoading="let todos until todos$ | async; color: 'accent';">
+      <afd-todo-list [todos]="todos" (done)="done($event)" (delete)="delete($event)"></afd-todo-list>
+    </div>
+
   </mat-card-content>
 </mat-card>

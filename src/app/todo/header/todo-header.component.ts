@@ -19,11 +19,17 @@ export class TodoHeaderComponent implements OnInit {
     this.setupForm();
   }
 
-  addTodo(vent) {
+  add() {
     if (this.form.valid) {
       const todo = this.form.get('todo');
       this.addTodoEventEmitter.emit(todo.value);
+      this.clear();
     }
+  }
+
+  clear() {
+    const todo = this.form.get('todo');
+    todo.setValue('');
   }
 
   private setupForm() {

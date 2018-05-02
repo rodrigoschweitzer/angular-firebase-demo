@@ -38,8 +38,10 @@ export class AbstractService<M extends AbstractModel> {
 		return this.add(model);
 	}
 
-	add(model: M) {
-		return this._collectionRef.add(model);
+	async add(model: M) {
+        const docRef = await this._collectionRef.add(model);
+        const newModel = Object.assign(model, { id: docRef.id });
+        return this.update(newModel);
 	}
 
 	update(model: M) {

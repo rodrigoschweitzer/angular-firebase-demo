@@ -1,9 +1,15 @@
-<form [formGroup]="form" (ngSubmit)="addTodo()">
-  <mat-form-field floatLabel="never" errorState="true">
-    <input type="text" matInput placeholder="Create a new todo..." formControlName="todo">
+<form [formGroup]="form" (ngSubmit)="add()" fxLayout fxLayoutAlign="start center">
+  <mat-form-field floatLabel="never" fxFlex>
+    <input type="text" matInput placeholder="Create a new todo..." formControlName="todo" #todo>
+
+    <button mat-button *ngIf="todo.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 
-  <button type="submit" mat-icon-button>
+
+
+  <button type="submit" mat-icon-button [disabled]="form.invalid">
     <mat-icon>send</mat-icon>
   </button>
 </form>
