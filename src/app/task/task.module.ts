@@ -5,6 +5,7 @@ import { TaskHeaderComponent } from './header/task-header.component';
 import { TaskListComponent } from './list/task-list.component';
 import { ROUTE_COMPONENTS, TaskRoutingModule } from './task-routing.module';
 import { TaskService } from './task.service';
+import { EmptyTaskComponent } from './list/empty-task-message.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { TaskService } from './task.service';
   declarations: [
     ROUTE_COMPONENTS,
     TaskHeaderComponent,
-    TaskListComponent
+    TaskListComponent,
+    EmptyTaskComponent
   ],
   providers: [TaskService]
 })

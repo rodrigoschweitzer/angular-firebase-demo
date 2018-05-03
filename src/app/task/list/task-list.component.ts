@@ -10,11 +10,6 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
       text-decoration: line-through;
       opacity: 0.6;
     }
-    .empty-tasks {
-      width: 100px;
-      height: 100px;
-      background: url('assets/images/empty_tasks.png') round;
-    }
   `]
 })
 export class TaskListComponent {

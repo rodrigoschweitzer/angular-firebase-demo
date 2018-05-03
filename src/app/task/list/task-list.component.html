@@ -15,8 +15,5 @@
 </mat-list>
 
 <ng-template #message>
-  <div class="mat-body-2 push" *ngIf="!hideMessage" fxLayout="column" fxLayoutAlign="center center">
-    <div class="empty-tasks"></div>
-    <div>You don't have any tasks.</div>
-  </div>
+  <afd-empty-task *ngIf="!hideMessage"></afd-empty-task>
 </ng-template>
