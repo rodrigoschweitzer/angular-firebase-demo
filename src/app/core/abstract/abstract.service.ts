@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractModel } from './abstract.interface';
 import { AngularFirestore, AngularFirestoreCollection, QueryFn, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AbstractService<M extends AbstractModel> {
