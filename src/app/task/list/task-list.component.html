@@ -5,7 +5,7 @@
 
     <mat-checkbox [checked]="task.completed" (change)="completed($event, task)" fxFlex>{{ task.title }}</mat-checkbox>
 
-    <button type="button" mat-icon-button (click)="delete(task)" matTooltip="Delete">
+    <button type="button" mat-icon-button aria-label="Delete" matTooltip="Delete" (click)="delete(task)">
       <mat-icon>delete</mat-icon>
     </button>
 

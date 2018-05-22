@@ -2,7 +2,7 @@
   <mat-form-field floatLabel="never" fxFlex>
     <input type="text" matInput placeholder="Create a new task..." autocomplete="off" formControlName="task" #task (keyup.esc)="clear()">
 
-    <button type="button" *ngIf="task.value" mat-icon-button matSuffix aria-label="Clear" (click)="clear()">
+    <button type="button" *ngIf="task.value" mat-icon-button matSuffix aria-label="Clear" matTooltip="Clear" (click)="clear()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
