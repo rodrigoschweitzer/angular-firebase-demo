@@ -32,8 +32,7 @@ export class TaskListComponent {
   constructor() { }
 
   completed(event: MatCheckboxChange, task: Task) {
-    const finishedAt = event.checked ? new Date() : null;
-    this.completedTaskEventEmitter.emit({ ...task, completed: event.checked, finishedAt });
+    this.completedTaskEventEmitter.emit({ ...task, completed: event.checked });
   }
 
   delete(task: Task) {

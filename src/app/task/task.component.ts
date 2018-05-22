@@ -32,7 +32,8 @@ export class TaskComponent implements OnInit {
   }
 
   completed(task: Task) {
-    this.taskService.update(task);
+    const finishedAt = task.completed ? new Date() : null;
+    this.taskService.update({ ...task, finishedAt });
   }
 
   showConfirmDelete(task: Task) {
