@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CovalentDialogsModule } from '@covalent/core/dialogs';
 import { CovalentLoadingModule } from '@covalent/core/loading';
 
 const MATERIAL_MODULES = [
@@ -33,6 +34,7 @@ const MATERIAL_MODULES = [
 
 const COVALENT_MODULES = [
 	CovalentLoadingModule,
+	CovalentDialogsModule
 ];
 
 @NgModule({
