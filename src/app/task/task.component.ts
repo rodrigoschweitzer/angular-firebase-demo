@@ -38,7 +38,7 @@ export class TaskComponent implements OnInit {
   showConfirmDelete(task: Task) {
     const confirmDialog = this.dialogService.openConfirm({
       message: `Do you want delete the task '${task.title}'?`,
-      title: 'Confirm Delete',
+      title: 'Delete task?',
       cancelButton: 'Cancel',
       acceptButton: 'Delete'
     });
