@@ -6,7 +6,8 @@ const routes: Routes = [
   {
     path: '', component: MainComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'tasks' },
+      { path: '', pathMatch: 'full', redirectTo: 'lists' },
+      { path: 'lists', loadChildren: 'app/list/list.module#ListModule' },
       { path: 'tasks', loadChildren: 'app/task/task.module#TaskModule' }
     ]
   }
