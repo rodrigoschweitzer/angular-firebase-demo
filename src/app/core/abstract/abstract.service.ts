@@ -39,13 +39,26 @@ export class AbstractService<M extends AbstractModel> {
 	}
 
 	async add(model: M) {
-        const docRef = await this._collectionRef.add(model);
+        const batch = this.afs.firestore.batch();
+        const id = this.afs.createId();
+
+        const docRef = this._collectionRef.doc(id).ref;
+
+        batch.set(docRef, model);
+
         const newModel = Object.assign(model, { id: docRef.id });
-        return this.update(newModel);
+        return this.update(newModel, batch);
 	}
 
-	update(model: M) {
-		if (!model.id) return Promise.resolve();
+	update(model: M, batch?: firebase.firestore.WriteBatch) {
+        if (!model.id) return Promise.resolve();
+
+        if (batch) {
+            const docRef = this._collectionRef.doc(model.id).ref;
+            batch.update(docRef, model);
+            return batch.commit();
+        }
+
 		return this._collectionRef.doc(model.id).update(model);
 	}
 
