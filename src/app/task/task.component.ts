@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TdDialogService } from '@covalent/core/dialogs';
 import { Observable } from 'rxjs';
 
-import { Task } from './task.model';
+import { Task, Tasks } from './task.model';
 import { TaskService } from './task.service';
 import { takeWhile } from 'rxjs/operators';
 
@@ -12,9 +12,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class TaskComponent implements OnInit {
 
-  tasks$: Observable<Task[]>;
-
-  tasksCompleted$: Observable<Task[]>;
+  tasks$: Observable<Tasks>;
 
   private alive: boolean = true;
 
@@ -24,7 +22,6 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
     this.loadTasks();
-    this.loadCompletedTasks();
   }
 
   add(title: string) {
@@ -44,7 +41,8 @@ export class TaskComponent implements OnInit {
       acceptButton: 'Delete'
     });
 
-    confirmDialog.beforeClose().pipe(takeWhile(() => this.alive))
+    confirmDialog.beforeClose()
+      .pipe(takeWhile(() => this.alive))
       .subscribe(answer => {
         if (answer) this.delete(task);
       });
@@ -55,11 +53,7 @@ export class TaskComponent implements OnInit {
   }
 
   private loadTasks() {
-    this.tasks$ = this.taskService.list(ref => ref.where('completed', '==', false).orderBy('createdAt', 'desc'));
-  }
-
-  private loadCompletedTasks() {
-    this.tasksCompleted$ = this.taskService.list(ref => ref.where('completed', '==', true).orderBy('finishedAt', 'desc'));
+    this.tasks$ = this.taskService.list(ref => ref.orderBy('createdAt', 'desc'));
   }
 
 }

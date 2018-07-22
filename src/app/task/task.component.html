@@ -1,15 +1,14 @@
 <mat-card>
 
-  <mat-card-content>
+  <mat-card-content fxLayout="column">
     <afd-task-header (add)="add($event)" fxFlex></afd-task-header>
 
-    <mat-divider></mat-divider>
+    <mat-divider [inset]="true"></mat-divider>
 
     <div *tdLoading="let tasks until tasks$ | async; color: 'accent';">
       <afd-task-list [tasks]="tasks" (completed)="completed($event)" (delete)="showConfirmDelete($event)"></afd-task-list>
-
-      <afd-task-list title="Completed" hideMessage="true" [tasks]="tasksCompleted$ | async" (completed)="completed($event)" (delete)="showConfirmDelete($event)"></afd-task-list>
     </div>
-
   </mat-card-content>
+
 </mat-card>
+

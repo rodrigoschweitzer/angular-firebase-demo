@@ -1,4 +1,4 @@
-<mat-list *ngIf="tasks?.length; else message">
+<mat-list *ngIf="tasks?.length; else message" data-test="taskList">
   <h3 matSubheader *ngIf="title">{{ title }}</h3>
 
   <mat-list-item *ngFor="let task of tasks; let last = last; trackBy: trackById" [ngClass]="{ 'completed': task.completed }">
