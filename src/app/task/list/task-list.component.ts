@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Task } from '../task.model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+
+import { Task, Tasks } from '../task.model';
 
 @Component({
   selector: 'afd-task-list',
@@ -21,7 +22,7 @@ export class TaskListComponent {
   hideMessage: boolean = false;
 
   @Input()
-  tasks: Task[] = [];
+  tasks: Tasks = [];
 
   @Output('delete')
   private deleteTaskEventEmitter: EventEmitter<Task> = new EventEmitter();
