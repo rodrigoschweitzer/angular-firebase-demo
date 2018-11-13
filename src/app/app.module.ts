@@ -5,9 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '@afd-core/core.module';
 import { environment } from '@afd-environments/environment';
 import { SharedModule } from '@afd-shared/shared.module';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
