@@ -38,7 +38,7 @@ export class AbstractService<M extends AbstractModel> {
 		return this.add(model);
 	}
 
-	async add(model: M) {
+	add(model: M) {
         const batch = this.afs.firestore.batch();
         const id = this.afs.createId();
 
@@ -50,21 +50,25 @@ export class AbstractService<M extends AbstractModel> {
         return this.update(newModel, batch);
 	}
 
-	update(model: M, batch?: firebase.firestore.WriteBatch) {
-        if (!model.id) return Promise.resolve();
+	async update(model: M, batch?: firebase.firestore.WriteBatch) {
+        if (!model.id) return Promise.reject();
 
-        if (batch) {
-            const docRef = this._collectionRef.doc(model.id).ref;
-            batch.update(docRef, model);
-            return batch.commit();
+        try {
+            if (batch) {
+                const docRef = this._collectionRef.doc(model.id).ref;
+                batch.update(docRef, model);
+                await batch.commit();
+                return Promise.resolve(model);
+            }
+
+            await this._collectionRef.doc(model.id).update(model);
+            return Promise.resolve(model);
+        } catch (error) {
+            return Promise.reject(error);
         }
-
-		return this._collectionRef.doc(model.id).update(model);
 	}
 
-	delete(model: M | string) {
-        let id = typeof model === 'string' ? model : model.id;
-		if (!id) return Promise.resolve();
+	delete(id: string) {
 		return this.get(id).delete();
 	}
 

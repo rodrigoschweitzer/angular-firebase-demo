@@ -8,9 +8,12 @@ import { SharedModule } from '@afd-shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -23,7 +26,13 @@ import { AppComponent } from './app.component';
 		AngularFirestoreModule,
 		AngularFireAuthModule,
 		CoreModule.forRoot(),
-		SharedModule
+    SharedModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      name: 'Angular Firebase Demo DevTools',
+      logOnly: environment.production
+    })
   ],
   declarations: [
     AppComponent

@@ -1,15 +1,21 @@
-import { NgModule } from '@angular/core';
-
 import { SharedModule } from '@afd-shared/shared.module';
-import { TaskHeaderComponent } from './header/task-header.component';
-import { TaskListComponent } from './list/task-list.component';
+import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+
+import { TaskHeaderComponent } from './components/header/task-header.component';
+import { EmptyTaskComponent } from './components/list/empty-task-message.component';
+import { TaskListComponent } from './components/list/task-list.component';
+import { TaskEffects } from './state/task.effects';
+import { reducer } from './state/task.reducer';
 import { ROUTE_COMPONENTS, TaskRoutingModule } from './task-routing.module';
-import { EmptyTaskComponent } from './list/empty-task-message.component';
 
 @NgModule({
   imports: [
     SharedModule,
-    TaskRoutingModule
+    TaskRoutingModule,
+    StoreModule.forFeature('tasks', reducer),
+    EffectsModule.forFeature([TaskEffects])
   ],
   declarations: [
     ROUTE_COMPONENTS,

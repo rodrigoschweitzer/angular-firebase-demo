@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-content>
+
+    <form [formGroup]="form" (ngSubmit)="add()" fxLayout fxLayoutAlign="start center">
+      <mat-form-field floatLabel="never" fxFlex>
+        <input type="text" matInput autofocus placeholder="Create a new task..." autocomplete="off" formControlName="task" #task (keyup.esc)="clear()" data-test="taskInput">
+
+        <button type="button" *ngIf="task.value" mat-icon-button matSuffix aria-label="Clear" matTooltip="Clear" (click)="clear()" data-test="clearButton">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button type="submit" mat-icon-button data-test="sendButton">
+        <mat-icon>send</mat-icon>
+      </button>
+    </form>
+
+  </mat-card-content>
+</mat-card>

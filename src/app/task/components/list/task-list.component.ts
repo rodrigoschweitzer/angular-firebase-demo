@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
-import { Task, Tasks } from '../task.model';
+import { Task, Tasks } from '../../task.model';
 
 @Component({
   selector: 'afd-task-list',

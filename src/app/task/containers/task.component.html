@@ -1,0 +1,7 @@
+<div fxLayout="column">
+  <afd-task-header (add)="add($event)" fxFlex></afd-task-header>
+
+  <div *tdLoading="let tasks until tasks$ | async; color: 'accent';">
+    <afd-task-list [tasks]="tasks" (completed)="completed($event)" (delete)="showConfirmDelete($event)"></afd-task-list>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<mat-card>
+
+  <mat-card-content>
+    <mat-list *ngIf="tasks?.length; else message" data-test="taskList">
+      <h3 matSubheader *ngIf="title">{{ title }}</h3>
+
+      <mat-list-item *ngFor="let task of tasks; trackBy: trackById">
+
+        <mat-checkbox [checked]="task.completed" [class.completed]="task.completed" (change)="completed($event, task)" fxFlex>
+          {{ task.title }}
+        </mat-checkbox>
+
+        <button type="button" mat-icon-button aria-label="Delete" matTooltip="Delete" (click)="delete(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </mat-list-item>
+    </mat-list>
+
+    <ng-template #message>
+      <afd-empty-task *ngIf="!hideMessage"></afd-empty-task>
+    </ng-template>
+  </mat-card-content>
+
+  <mat-divider [inset]="true"></mat-divider>
+
+  <mat-card-actions *ngIf="tasks?.length">
+    <button type="button" mat-button color="accent">Clear</button>
+  </mat-card-actions>
+
+</mat-card>
+
